@@ -1,15 +1,12 @@
-import functools
-def check_len(leng):
-    # используем замыкание
-    def check_len_arg(func):
-        @functools.wraps(func)
-        def wrapper_decorator(*args, **kwargs):
-            print(args)
-            if len(args[0]) > leng:
-                return 'Too big'
-            value = func(*args, **kwargs)
-            # Do something after
-            return value
-        return wrapper_decorator
-    return check_len_arg
+log_pass = {'ww':'ee', 'ss':'dd'}
+
+log = str(input('Введите логин: '))
+password = str(input('Введите пароль: '))
+password2 = str(input('Повторите пароль: '))
+
+if log not in log_pass.keys() and password == password2:
+    log_pass[log] = password,
+    print(1),#, menu();
+    log_pass[log] = password;
+    print(log_pass)
 

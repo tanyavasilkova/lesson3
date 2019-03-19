@@ -1,6 +1,55 @@
 data_users = {}
 
-def menu():
+log_pass = {}
+
+
+def main():
+    print('Выберите действие:\n\
+          1. Зарегистрироваться\n\
+          2. Войти')
+    deistvie = str(input('Введите 1 либо 2: '))
+
+    if deistvie == '1': loginpassword();
+    elif deistvie == '2': autint()
+    elif deistvie != '1' or deistvie != '2':
+        print('Вы ввели неверный символ!')
+        return main()
+
+
+def loginpassword():  # регистрация
+    log = str(input('Введите логин: '))
+    password = str(input('Введите пароль: '))
+    password2 = str(input('Повторите пароль: '))
+
+    if log not in log_pass.keys() and password != password2:  # проверка паролей
+        print('Пароли не совпадат. Повторите ввод:'),
+        return loginpassword()
+
+    if log in log_pass.keys():  # проверка на отсутствие логина
+        print('Такой логин уже существует, введите иной'),
+        return loginpassword()
+
+    if log not in log_pass.keys() and password == password2: log_pass[log] = password; print('Вы успешно зарегистрированы. Вы вошли в систему. Меню:'), menu();  # проверка условий логин-пароль и вход в систему
+
+
+def autint():  # войти по логину и паролю
+    log2 = str(input('Login: '))
+    password2 = str(input('Password: '))
+
+    if log2 not in log_pass.keys():
+        print('Ошибка! Введите верный логин либо зарегистрируйтесь!')
+        return main()
+
+    if password2 != log_pass[log2]:
+        print('Логин и пароль не совпадают. Повторите попытку либо зарегистрируйтесь!'),
+        return main()
+
+    if password2 == log_pass[log2]:
+        menu()
+
+
+
+def menu():#  меню
 
     t = 0
     while t != 5:
@@ -10,25 +59,26 @@ def menu():
         3. Удалить пользователя\n\
         4. Выбрать пользователя\n\
         5. Выход')
-        t = int(input('Введите число: '))
+        t = str(input('Введите число: '))
 
-        if t == 1: viewusers();  # вывести список
-        elif t == 2: adduser();  # добавить пользователя
-        elif t == 3: deleteuser(); # удалить пользователя
-        elif t == 4: selectuser();  # выбрать пользователя
-        elif t == 5: print(5)#exit_()
-        #while t < 1 or t > 5:
-            #print('ВВедите число от 1 до 5')
-            #t = int(input('Введите число: '))
+        if t == '1': viewusers();  # вывести список
+        elif t == '2': adduser();  # добавить пользователя
+        elif t == '3': deleteuser(); # удалить пользователя
+        elif t == '4': selectuser();  # выбрать пользователя
+        elif t == '5': print('Вы вышли из симтемы'), main()# выход на логин и пароль\регистрацию
 
-def viewusers():
+        elif t !='1' or  t != '2' or t != '3' or t != '4' or t != '5': print('Неверно! ВВедите число от 1 до 5'),
+        return menu()
+
+
+def viewusers(): # посмотреть список пользователей
 
     print('Список пользователей:')
     for i in data_users.keys():
         print(i)
 
 
-def adduser():
+def adduser(): # добавитьимя с данными
 
     a = str(input('Введите Ваше Имя: '))
     v = int(input('Введите Ваш возраст: '))
@@ -37,6 +87,10 @@ def adduser():
         v = int(input('Введите Ваш возраст: '))
 
     p = str(input("Если вы мужчина, укажите 'm', если женщина - 'w' "))
+    while p != 'm' and p != 'w':
+        print('Неверный ввод!')
+        p = str(input("Если вы мужчина, укажите 'm', если женщина - 'w' "))
+
 
     r = float(input('Введите Ваш рост в сантиметрах: '))
     m = float(input('Введите Ваш вес в килограммах: '))
@@ -47,7 +101,7 @@ def adduser():
     data_users[a] = {'Возраст': v,'Пол': p, 'Рост': r, 'Вес': m, 'BMI': description_bmi+'\n'}
 
 
-def deleteuser():
+def deleteuser(): # удалить имя с данными
 
     print('Выберите из списка Имя для удаления и введите его:')
     viewusers()
@@ -55,7 +109,7 @@ def deleteuser():
     data_users.pop(del_user)
 
 
-def selectuser():
+def selectuser(): # посмотреть данные с именем
 
     print('Выберите из списка имя и введите его:')
     viewusers()
@@ -65,7 +119,7 @@ def selectuser():
         print(key, znach[key])
 
 
-def bmi(a, v, p, r, m):
+def bmi(a, v, p, r, m): # функция bmi
 
     w = m / ((r ** 2) * 0.0001)
     w = float('{:.2f}'.format(w))
@@ -138,4 +192,4 @@ def bmi(a, v, p, r, m):
 
 
 
-menu()
+main()
