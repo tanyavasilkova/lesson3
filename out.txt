@@ -1,6 +1,0 @@
-name:dd
-age:33
-sex:m
-rost:33.0
-ves:33.0
-bmi:Ваш BMI: 303.03

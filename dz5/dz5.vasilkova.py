@@ -1,6 +1,4 @@
-data_users = {}
-
-log_pass = {}
+import json
 
 
 def main():
@@ -9,43 +7,60 @@ def main():
           2. Войти')
     deistvie = str(input('Введите 1 либо 2: '))
 
-    if deistvie == '1': loginpassword();
-    elif deistvie == '2': autint()
+    if deistvie == '1': registration();
+    elif deistvie == '2': auth()
     elif deistvie != '1' or deistvie != '2':
         print('Вы ввели неверный символ!')
         return main()
 
 
-def loginpassword():  # регистрация
-    log = str(input('Введите логин: '))
-    password = str(input('Введите пароль: '))
+def registration():  # регистрация
+    login1 = str(input('Введите логин: '))
+    password1 = str(input('Введите пароль: '))
     password2 = str(input('Повторите пароль: '))
 
-    if log not in log_pass.keys() and password != password2:  # проверка паролей
-        print('Пароли не совпадат. Повторите ввод:'),
-        return loginpassword()
+    text = list(read_from_file())
+    for item in text:
 
-    if log in log_pass.keys():  # проверка на отсутствие логина
-        print('Такой логин уже существует, введите иной'),
-        return loginpassword()
+        if item['login'] != login1 and password1 != password2:  # проверка паролей
+            print('Пароли не совпадают. Повторите ввод:'),
+            return registration()
 
-    if log not in log_pass.keys() and password == password2: log_pass[log] = password; print('Вы успешно зарегистрированы. Вы вошли в систему. Меню:'), menu();  # проверка условий логин-пароль и вход в систему
+        if item['login'] == login1:  # проверка на отсутствие логина
+            print('Такой логин уже существует, введите иной'),
+            return registration()
+
+        if item['login'] != login1 and password1 == password2:
+            print('Вы успешно зарегистрированы. Вы вошли в систему. Меню:') # проверка условий логин-пароль и вход в систему
+            info = data_bmi()
+            log = {'login':login1, 'password':password1, 'data': info}
 
 
-def autint():  # войти по логину и паролю
-    log2 = str(input('Login: '))
-    password2 = str(input('Password: '))
+            text.append(log)
+            write_to_file(text)
 
-    if log2 not in log_pass.keys():
-        print('Ошибка! Введите верный логин либо зарегистрируйтесь!')
-        return main()
-
-    if password2 != log_pass[log2]:
-        print('Логин и пароль не совпадают. Повторите попытку либо зарегистрируйтесь!'),
-        return main()
-
-    if password2 == log_pass[log2]:
         menu()
+
+
+
+
+def auth():  # войти по логину и паролю
+    login = str(input('Login: '))
+    password = str(input('Password: '))
+
+    text = list(read_from_file())
+    for item in text:
+
+        if item['login'] != login:
+            print('Ошибка! Введите верный логин либо зарегистрируйтесь!')
+            return main()
+
+        if item['login'] != login and item['password'] != password:
+            print('Логин и пароль не совпадают. Повторите попытку либо зарегистрируйтесь!'),
+            return main()
+
+        if item['login'] == login and item['password'] == password:
+            menu()
 
 
 
@@ -62,51 +77,59 @@ def menu():#  меню
         t = str(input('Введите число: '))
 
         if t == '1': viewusers();  # вывести список
-        elif t == '2': adduser();  # добавить пользователя
+        elif t == '2': data_bmi();  # добавить пользователя
         elif t == '3': deleteuser(); # удалить пользователя
         elif t == '4': selectuser();  # выбрать пользователя
-        elif t == '5': print('Вы вышли из симтемы'), main()# выход на логин и пароль\регистрацию
+        elif t == '5': print('Вы вышли из системы'), main()# выход на логин и пароль\регистрацию
 
         elif t !='1' or  t != '2' or t != '3' or t != '4' or t != '5': print('Неверно! ВВедите число от 1 до 5'),
         return menu()
 
 
 def viewusers(): # посмотреть список пользователей
-
     print('Список пользователей:')
-    for i in data_users.keys():
-        print(i)
+
+    text = list(read_from_file())
+    for item in text:
+        print(item['login'])
 
 
-def adduser(): # добавитьимя с данными
+def data_bmi(): # добавить имя с данными
 
     a = str(input('Введите Ваше Имя: '))
     v = int(input('Введите Ваш возраст: '))
     while v < 18:
         print('Данное определение BMI предназначено для лиц старше 18 лет. Введите число больше 18.')
         v = int(input('Введите Ваш возраст: '))
-
     p = str(input("Если вы мужчина, укажите 'm', если женщина - 'w' "))
     while p != 'm' and p != 'w':
         print('Неверный ввод!')
         p = str(input("Если вы мужчина, укажите 'm', если женщина - 'w' "))
-
-
     r = float(input('Введите Ваш рост в сантиметрах: '))
     m = float(input('Введите Ваш вес в килограммах: '))
     description_bmi = bmi(a, v, p, r, m)
 
-    #d = {a : {'Возраст': v,'Пол': p, 'Рост': r, 'Вес': m, 'BMI': description_bmi+'\n'}}
-    #data_users.append(d)
-    data_users[a] = {'Возраст': v,'Пол': p, 'Рост': r, 'Вес': m, 'BMI': description_bmi+'\n'}
+    d = {'Имя':a, 'Возраст':v,'Пол':p, 'Рост':r, 'Вес':m, 'BMI': description_bmi+'\n'}
+
+    return d
+
 
 
 def deleteuser(): # удалить имя с данными
-
     print('Выберите из списка Имя для удаления и введите его:')
+
     viewusers()
-    del_user = str(input('ВВедите имя: '))
-    data_users.pop(del_user)
+    del_user = str(input('Введите имя: '))
+
+    text = list(read_from_file())
+    for item in text:
+        if item['login'] == del_user:
+            text.remove(item)
+            print('Введенный пользователь %s удален!' % del_user)
+    write_to_file(text)
+
+    return main()
+
 
 
 def selectuser(): # посмотреть данные с именем
@@ -114,9 +137,26 @@ def selectuser(): # посмотреть данные с именем
     print('Выберите из списка имя и введите его:')
     viewusers()
     imya_data = str(input('Введите имя: '))
-    znach = data_users[imya_data]
-    for key in znach:#data_users[imya_data]:
-        print(key, znach[key])
+
+    text = list(read_from_file())
+    for item in text:
+        if item['login'] == imya_data:
+            print(item['data'])
+
+
+
+def write_to_file(text):
+    with open('userdb.txt', 'w') as outfile:
+        json.dump(text, outfile)
+
+
+
+def read_from_file():
+    with open('userdb.txt', 'r') as outfile:
+        return json.load(outfile)
+
+
+
 
 
 def bmi(a, v, p, r, m): # функция bmi
