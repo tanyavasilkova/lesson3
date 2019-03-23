@@ -1,15 +1,17 @@
-headers = input("Файл содержит заголовки? (д/н)")
+headers = input("Файл содержит заголовки? (y/n)")
 delim = input("Используемый разделитель: ")
 result = {}
 f = open(r'import.csv', 'r')
 a = f.read().splitlines()
 for item in a:
-    item.split(delim)
-    result[item[0]] = [item[1], item[2]]
+    slova = item.split(delim)
+    result[slova[0]] = [slova[1], slova[2]]
 
-if headers == 'н':
-    for i in a:
+#print(str(result.keys()[0]))
+
+if headers == 'n':
+    result.pop('id')
 
 
-# парсинг тут
-print(result)
+
+print(str(result))
