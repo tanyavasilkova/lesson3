@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d8792ffc-2be5-41d8-92b4-b06291b07bb2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dz5/parsing_csv.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz5/parsing_csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz5/dz5.vasilkova.py" beforeDir="false" afterPath="$PROJECT_DIR$/dz5/dz5.vasilkova.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dz5/userdb.txt" beforeDir="false" afterPath="$PROJECT_DIR$/dz5/userdb.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -13,20 +14,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/dz5/dz5.vasilkova.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="138" column="39" selection-start-line="138" selection-start-column="39" selection-end-line="138" selection-end-column="39" />
+            <state relative-caret-position="276">
+              <caret line="179" column="38" lean-forward="true" selection-start-line="179" selection-start-column="38" selection-end-line="179" selection-end-column="38" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/dz5/parsing_csv.py">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dz5/1122.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+            <state relative-caret-position="184">
+              <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dz5/userdb.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="419" selection-start-column="419" selection-end-column="419" />
             </state>
           </provider>
         </entry>
@@ -60,14 +70,18 @@
         <option value="$PROJECT_DIR$/dz4.vasilkova.py" />
         <option value="$PROJECT_DIR$/parsing_csv.py" />
         <option value="$PROJECT_DIR$/dz5/parsing_csv.py" />
+        <option value="$PROJECT_DIR$/old_dz/dz5/userdb.txt" />
+        <option value="$PROJECT_DIR$/dz5/userdb.txt" />
+        <option value="$PROJECT_DIR$/dz5/1122.py" />
+        <option value="$PROJECT_DIR$/dz5/dz5.vasilkova.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="186" />
     <option name="y" value="27" />
-    <option name="width" value="1505" />
-    <option name="height" value="1019" />
+    <option name="width" value="1495" />
+    <option name="height" value="1048" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -86,11 +100,6 @@
               <item name="project-python" type="b2602c69:ProjectViewProjectNode" />
               <item name="project-python" type="462c0819:PsiDirectoryNode" />
               <item name="dz5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="project-python" type="b2602c69:ProjectViewProjectNode" />
-              <item name="project-python" type="462c0819:PsiDirectoryNode" />
-              <item name="venv" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -119,7 +128,28 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.parsing_csv (1)">
+  <component name="RunManager" selected="Python.dz5.vasilkova">
+    <configuration name="1122" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="project-python" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dz5" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dz5/1122.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="dz3Vasilkova" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project-python" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -141,7 +171,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dz4.vasilkova" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="dz5.vasilkova" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="project-python" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -149,11 +179,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dz5" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dz4.vasilkova.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dz5/dz5.vasilkova.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -204,34 +234,13 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="readfile" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="project-python" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/readfile.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.dz5.vasilkova" />
+        <item itemvalue="Python.1122" />
         <item itemvalue="Python.parsing_csv (1)" />
         <item itemvalue="Python.parsing_csv" />
         <item itemvalue="Python.dz3Vasilkova" />
-        <item itemvalue="Python.dz4.vasilkova" />
-        <item itemvalue="Python.readfile" />
       </list>
     </recent_temporary>
   </component>
@@ -258,16 +267,15 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="186" y="27" width="1505" height="1019" extended-state="0" />
-    <editor active="true" />
+    <frame x="186" y="27" width="1495" height="1048" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.101845525" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16242257" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3297456" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.36175114" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.38364056" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.40245262" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.38350055" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Python Console" order="6" weight="0.6889401" />
@@ -322,17 +330,45 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/parsing_csv.py" />
-    <entry file="file://$PROJECT_DIR$/dz5/dz5.vasilkova.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="138" column="39" selection-start-line="138" selection-start-column="39" selection-end-line="138" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dz5/parsing_csv.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="7" column="30" selection-start-line="7" selection-start-column="30" selection-end-line="7" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/old_dz/usersdata_f">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="23">
+          <caret line="1" column="5" selection-start-line="1" selection-start-column="5" selection-end-line="1" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/old_dz/dz5/userdb.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="421" lean-forward="true" selection-end-column="518" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dz5/userdb.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="419" selection-start-column="419" selection-end-column="419" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dz5/1122.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="8" column="24" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dz5/dz5.vasilkova.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="276">
+          <caret line="179" column="38" lean-forward="true" selection-start-line="179" selection-start-column="38" selection-end-line="179" selection-end-column="38" />
         </state>
       </provider>
     </entry>
