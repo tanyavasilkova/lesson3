@@ -19,27 +19,32 @@ def registration():  # регистрация
     password1 = str(input('Введите пароль: '))
     password2 = str(input('Повторите пароль: '))
 
-    text = list(read_from_file())
-    for item in text:
+    text = list(read_from_file()) # открытие файла на чтение
 
-        if item['login'] != login1 and password1 != password2:  # проверка паролей
-            print('Пароли не совпадают. Повторите ввод:'),
+    for item in text: # проверка на отсутствие логина
+
+        if item['login'] == login1:
+            print('Такой логин уже существует, введите иной')
             return registration()
 
-        if item['login'] == login1:  # проверка на отсутствие логина
-            print('Такой логин уже существует, введите иной'),
-            return registration()
+    if item['login'] != login1: # проверка паролей
 
-        if item['login'] != login1 and password1 == password2:
-            print('Вы успешно зарегистрированы. Вы вошли в систему. Меню:') # проверка условий логин-пароль и вход в систему
-            info = data_bmi()
-            log = {'login':login1, 'password':password1, 'data': info}
+        if password1 != password2:
+                print('Пароли не совпадают. Повторите ввод:'),
+                return registration()
 
+        elif password1 == password2:
+                print('Вы успешно зарегистрированы. Вы вошли в систему. Введите ваши данные:')  # проверка условий логин-пароль и вход в систему
 
-            text.append(log)
-            write_to_file(text)
+                q = data_bmi()
+                info = []
+                info.append(q)
+                log = {'login':login1, 'password':password1, 'data': info}
 
-        menu()
+                text.append(log)
+                write_to_file(text)
+
+                menu()
 
 
 
@@ -50,17 +55,16 @@ def auth():  # войти по логину и паролю
 
     text = list(read_from_file())
     for item in text:
-
-        if item['login'] != login:
-            print('Ошибка! Введите верный логин либо зарегистрируйтесь!')
+        if item['login'] == login and item['password'] != password:
+            print('Логин и пароль не совпадают. Повторите попытку либо зарегистрируйтесь!')
             return main()
 
-        if item['login'] != login and item['password'] != password:
-            print('Логин и пароль не совпадают. Повторите попытку либо зарегистрируйтесь!'),
-            return main()
+        elif item['login'] == login and item['password'] == password:
+            return menu()
 
-        if item['login'] == login and item['password'] == password:
-            menu()
+
+    print('Ошибка! Введите верный логин и пароль либо зарегистрируйтесь!')
+    return main()
 
 
 
@@ -70,14 +74,14 @@ def menu():#  меню
     while t != 5:
         print('Выберите действие из возможных вариантов:\n\
         1. Вывести список пользователей\n\
-        2. Добавить пользователя\n\
+        2. Добавить/изменить данные пользователя\n\
         3. Удалить пользователя\n\
         4. Выбрать пользователя\n\
         5. Выход')
         t = str(input('Введите число: '))
 
         if t == '1': viewusers();  # вывести список
-        elif t == '2': data_bmi();  # добавить пользователя
+        elif t == '2': vary_data();  # измениь данные пользователя
         elif t == '3': deleteuser(); # удалить пользователя
         elif t == '4': selectuser();  # выбрать пользователя
         elif t == '5': print('Вы вышли из системы'), main()# выход на логин и пароль\регистрацию
@@ -93,6 +97,38 @@ def viewusers(): # посмотреть список пользователей
     for item in text:
         print(item['login'])
 
+def vary_data(): #изменить. внести новые данные
+    print('Введите логин и пароль для добавления измененных данных:')
+
+    login = str(input('Login: '))
+    password = str(input('Password: '))
+
+    text = list(read_from_file()) # открытие файла на чтение
+
+    for item in text:
+        if item['login'] == login and item['password'] == password:
+            print('Ввведите все ваши измененные и неизмененные данные:')
+
+            new_data = data_bmi()
+
+            for item in text: # поиск соответствий логин-пароль-данные
+
+                if item['login'] == login:
+                    q = item['data']
+                    q.append(new_data)
+                    print('Данные добавлены! ')
+                    print(q)
+                    for i in q:
+                        print(i + '\n')
+            write_to_file(text)
+
+        elif item['login'] == login and item['password'] != password:
+            print('Логин и пароль не совпадают.')
+            menu()
+
+
+
+
 
 def data_bmi(): # добавить имя с данными
 
@@ -107,6 +143,7 @@ def data_bmi(): # добавить имя с данными
         p = str(input("Если вы мужчина, укажите 'm', если женщина - 'w' "))
     r = float(input('Введите Ваш рост в сантиметрах: '))
     m = float(input('Введите Ваш вес в килограммах: '))
+
     description_bmi = bmi(a, v, p, r, m)
 
     d = {'Имя':a, 'Возраст':v,'Пол':p, 'Рост':r, 'Вес':m, 'BMI': description_bmi+'\n'}
@@ -132,7 +169,7 @@ def deleteuser(): # удалить имя с данными
 
 
 
-def selectuser(): # посмотреть данные с именем
+def selectuser(): # посмотреть данные с именем, выбрать пользователя
 
     print('Выберите из списка имя и введите его:')
     viewusers()
@@ -141,7 +178,11 @@ def selectuser(): # посмотреть данные с именем
     text = list(read_from_file())
     for item in text:
         if item['login'] == imya_data:
-            print(item['data'])
+            #print(item['data'])
+            for i in item['data']:
+                print(str(i) + '\n')
+                for key, value in dict(i).items():
+                    print(str(key) + ':' + str(value) + '\n')
 
 
 
@@ -207,7 +248,7 @@ def bmi(a, v, p, r, m): # функция bmi
     elif p == 'm':
         u = 'Уважаемый '
 
-    print(u, a, '!', 'Ваш возраст (в годах):', v, 'Ваш рост:', r, 'см', 'Ваш BMI:', w, f, b)
+    print(u, a, '!', 'Ваш возраст (в годах):', v, 'Ваш рост:', r, 'см', 'ваш вес:', m, 'кг', 'Ваш BMI:', w, f, b)
 
     print('График BMI')
     if w < 20: print(
